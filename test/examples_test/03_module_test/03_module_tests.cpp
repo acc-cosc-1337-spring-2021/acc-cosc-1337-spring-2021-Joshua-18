@@ -32,3 +32,32 @@ TEST_CASE("Test menu function", "given number returns Option N string")
 	REQUIRE(menu(4) == "Option 4");
 	REQUIRE(menu(5) == "Invalid Option");
 }
+
+TEST_CASE("Test number in range 1 to 10", "Give number return true if in range")
+{
+	REQUIRE(is_in_range_1_to_10(0) == false);
+	REQUIRE(is_in_range_1_to_10(5) == true);
+	REQUIRE(is_in_range_1_to_10(11) == false);
+}
+
+TEST_CASE("Test number NOT in range 1 to 10", "Give number return true if NOT in range")
+{
+	REQUIRE(is_not_in_range_1_to_10(0) == true);
+	REQUIRE(is_not_in_range_1_to_10(5) == false);
+	REQUIRE(is_not_in_range_1_to_10(11) == true);
+}
+
+TEST_CASE("Test number NOT in range 1 to 10 or", "Give number return true if NOT in range")
+{
+	REQUIRE(is_not_in_range_1_to_10_OR(0) == true);
+	REQUIRE(is_not_in_range_1_to_10_OR(5) == false);
+	REQUIRE(is_not_in_range_1_to_10_OR(11) == true);
+}
+
+TEST_CASE("Test if char is a consonant", "Give char return true if consonant")
+{
+	REQUIRE(is_char_a_consonant('a') == false);
+	REQUIRE(is_char_a_consonant('b') == true);
+	REQUIRE(is_char_a_consonant('e') == false);
+	REQUIRE(is_char_a_consonant('t') == true);
+}

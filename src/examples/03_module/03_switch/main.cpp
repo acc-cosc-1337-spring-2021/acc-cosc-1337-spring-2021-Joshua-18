@@ -6,7 +6,7 @@ using std::cin; using std::cout;
 int main() 
 {
 	int num;
-	cout<<"Enter number: ";
+	cout<<"Enter option [1-4]: ";
 	cin>>num;
 
 	cout<<menu(num);
