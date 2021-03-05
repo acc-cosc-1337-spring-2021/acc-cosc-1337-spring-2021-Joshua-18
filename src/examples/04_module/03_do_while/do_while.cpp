@@ -15,3 +15,10 @@ void prompt_user()
     }
     while(choice == 'y' || choice == 'Y');
 }
+
+void run_menu()
+{
+    cout<<"1-Accounting\n";
+    cout<<"2-Payroll\n";
+    cout<<"3- Exit\n\n";
+}
