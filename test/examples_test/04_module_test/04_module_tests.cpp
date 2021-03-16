@@ -33,3 +33,13 @@ TEST_CASE("Test call by reference", "A clone of the parameter is created")
 
 	REQUIRE(num2 == 50);
 }
+
+TEST_CASE("Test calculate weekly pay for salaried employees")
+{
+	REQUIRE(calculate_weekly_pay(52000) == 1000);
+}
+
+TEST_CASE("Test calculate weekly pay for hourly employees")
+{
+	REQUIRE(calculate_weekly_pay(40, 10) == 400);
+}
