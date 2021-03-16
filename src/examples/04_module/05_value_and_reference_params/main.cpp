@@ -23,5 +23,10 @@ int main()
 
 	pass_by_val_and_ref(num1, num2);// call by value
 
+
+	int num = 10;
+	pass_by_const_ref(10);
+
+	
 	return 0;
 }
