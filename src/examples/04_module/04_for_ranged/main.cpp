@@ -4,8 +4,9 @@
 
 int main() 
 {
-	std::string name = "Joe";
+	std::string name = "John";
 	//loop_string_w_index(name);
-	loop_string_w_for_range(name);
+	//loop_string_w_for_range(name);
+	loop_string_w_for_range_ref(name);
 	return 0;
 }

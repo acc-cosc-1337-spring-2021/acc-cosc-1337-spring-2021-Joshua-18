@@ -36,8 +36,23 @@ t
 */
 void loop_string_w_for_range(std::string str)
 {
-    for(auto s: str)
+    for(auto& s: str)
     {
         cout<<s<<"\n";
+        s = 'z';
     }
+
+    cout<<str<<"\n";
+}
+
+void loop_string_w_for_range_ref(std::string& str)
+{
+    for(auto& s: str)
+    {
+        cout<<s<<"\n";
+        s = 'z';
+        cout<<"\nafter assign z "<<s<<"\n";
+    }
+
+    cout<<str<<"\n";
 }
