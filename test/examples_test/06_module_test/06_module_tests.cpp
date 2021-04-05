@@ -84,3 +84,34 @@ TEST_CASE("Test Bank account withdraw with NSF")
 	account.withdraw(51);
 	REQUIRE(account.get_balance() == 50);
 }
+
+TEST_CASE("Test bank account bank_balance")
+{
+	BankAccount account;
+	account.deposit(50);
+
+	REQUIRE(account.get_bank_balance() == 50);
+}
+
+TEST_CASE("Test bank account bank_balance with deposit")
+{
+	BankAccount account;
+	account.deposit(50);
+
+	REQUIRE(account.get_bank_balance() == 640);
+
+}
+
+TEST_CASE("Test branch bank class")
+{
+	BankAccount account;
+	BranchBank branch_bank(100000);
+
+	REQUIRE(branch_bank.get_branch_balance() == 100000);
+
+	branch_bank.update_balance(5000);
+	REQUIRE(branch_bank.get_branch_balance() == 105000);
+
+	account.deposit(100);
+	REQUIRE(account.get_bank_balance() == 5740);
+}
