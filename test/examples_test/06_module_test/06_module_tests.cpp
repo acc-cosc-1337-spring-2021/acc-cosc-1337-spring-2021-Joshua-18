@@ -6,27 +6,40 @@ TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
 
-TEST_CASE("Test new bank account balance is 0")
+TEST_CASE("Test new bank account object balance")
 {
 	BankAccount account;
 
 	REQUIRE(account.get_balance() == 0);
 }
 
-TEST_CASE("Test bank account deposit with valid amount")
+TEST_CASE("Test new bank account with given begin balance")
+{
+	BankAccount account(100);
+
+	REQUIRE(account.get_balance() == 100);
+}
+
+TEST_CASE("Test bank account deposit")
 {
 	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
+	account.deposit(50);
+
+	REQUIRE(account.get_balance() == 50);
+
+}
+
+TEST_CASE("Test bank account deposit with given begin balance")
+{
+	BankAccount account(100);
 
 	account.deposit(50);
-	REQUIRE(account.get_balance() == 50);
+	REQUIRE(account.get_balance() == 150);
 }
 
-TEST_CASE("Test bank account deposit with invalid amount")
+TEST_CASE("Test bank account deposit with negative amount")
 {
 	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
-
 	account.deposit(50);
 	REQUIRE(account.get_balance() == 50);
 
@@ -34,38 +47,40 @@ TEST_CASE("Test bank account deposit with invalid amount")
 	REQUIRE(account.get_balance() == 50);
 }
 
-TEST_CASE("Test bank account withdraw with valid amount")
+TEST_CASE("Test bank account withdraw")
 {
 	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
-
 	account.deposit(50);
-	REQUIRE(account.get_balance() == 50);	
+	REQUIRE(account.get_balance() == 50);
 
 	account.withdraw(10);
-	REQUIRE(account.get_balance() == 40);	
+	REQUIRE(account.get_balance() == 40);
 }
 
-TEST_CASE("Test bank account withdraw with amount less than 0")
+TEST_CASE("Test bank account withdraw with a given begin balance")
+{
+	BankAccount account(100);
+	account.withdraw(10);
+
+	REQUIRE(account.get_balance() == 90);
+}
+
+TEST_CASE("Test Bank account withdraw with negative amount")
 {
 	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
-
 	account.deposit(50);
-	REQUIRE(account.get_balance() == 50);	
+	REQUIRE(account.get_balance() == 50);
 
 	account.withdraw(-10);
-	REQUIRE(account.get_balance() == 50);	
+	REQUIRE(account.get_balance() == 50);
 }
 
-TEST_CASE("Test bank account withdraw with amount greater than balance")
+TEST_CASE("Test Bank account withdraw with NSF")
 {
 	BankAccount account;
-	REQUIRE(account.get_balance() == 0);
-
 	account.deposit(50);
-	REQUIRE(account.get_balance() == 50);	
+	REQUIRE(account.get_balance() == 50);
 
 	account.withdraw(51);
-	REQUIRE(account.get_balance() == 50);	
+	REQUIRE(account.get_balance() == 50);
 }
