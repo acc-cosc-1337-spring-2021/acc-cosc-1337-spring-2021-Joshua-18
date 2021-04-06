@@ -8,7 +8,7 @@ class BranchBank
 public:
     BranchBank(int b) : branch_balance(b){}
     void update_balance(int b);
-    int get_branch_balance()const {return branch_balance;}
+    int get_branch_bank_balance()const{return branch_balance;}
 
 private:
     int branch_balance;
@@ -25,13 +25,13 @@ class BankAccount
 {
 friend void friend_display_balance(const BankAccount& account);
 friend void BranchBank::update_balance(int b);
-friend std::ostream& operator<<(std::ostream& out, const BankAccount& a);
-friend std::istream& operator>>(std::istream& in, BankAccount& a);
+friend std::ostream& operator<<(std::ostream& out, const BankAccount& account);
+friend std::istream& operator>>(std::istream& in, BankAccount& account);
 friend BankAccount operator+(const BankAccount& a1, const BankAccount& a2);
 
 public://access specifier USERS OF OUR CLASS(OTHER OBJECTS) CAN SEE WHAT'S IN PUBLIC
     BankAccount() = default;///synthesized default constructor
-    explicit BankAccount(int b) : balance(b){ bank_balance += b;}
+    explicit BankAccount(int b) : balance(b){ bank_balance += balance;}
     int get_balance()const{return balance;}
     void deposit(int amount);
     void withdraw(int amount);

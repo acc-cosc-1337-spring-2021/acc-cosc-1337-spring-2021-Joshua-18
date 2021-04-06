@@ -15,7 +15,7 @@ public:
 private:
     std::vector<BankAccount> accounts;
     int get_balance_from_DB();
-    int customer_index;
+    int customer_index{0};
 
 };
 

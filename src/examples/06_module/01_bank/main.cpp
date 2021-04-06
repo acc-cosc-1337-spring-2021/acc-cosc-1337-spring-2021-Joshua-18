@@ -1,4 +1,5 @@
 #include<iostream>
+#include<time.h>
 using std::cout; using std::cin;
 
 #include "atm.h"
@@ -9,32 +10,39 @@ int main()
 	// string name;// creates a string var in memory
 	// 			//create an instance of an object
 
+	srand(time(NULL));
+	BankAccount account = get_account(100);
 	BankAccount a1(100);
 	BankAccount a2(200);
-	BankAccount account = a1 + a2;//get_account(100);//variable-an instance of BankAccount object
-	cin>>account;
+	BankAccount a3 = a1 + a2;//get_account(100);//variable-an instance of BankAccount object
+	cout<<a3;
+	//	display_balance(account);
+	
+	/*char choice;
+	ATM atm;
 	/*char choice;
 	
 	do
 	{
-		ATM atm;
+		
 		atm.scan_card();
 		atm.display_balance();
 		cout<<"Continue? y or n";
 		cin>>choice;
 	}while(choice == 'y' || choice == 'Y');*/
 
-	cout<<account;
-	friend_display_balance(account);
-	display_account(account);
-
+	/*cout<<sizeof(account)<<"\n";
+	auto balance = account.get_balance();
+	cout<<"Balance: "<<balance<<"\n";
 	cout<<"Deposit $50\n";
 	account.deposit(50);
-	cout<<"Balance: "<<account.get_balance()<<"\n";
-
+	balance = account.get_balance();
+	cout<<"Balance: "<<balance<<"\n\n";
 	cout<<"Withdraw $10\n";
 	account.withdraw(10);
-	cout<<"Balance: "<<account.get_balance()<<"\n";
+	balance = account.get_balance();
+	cout<<"Balance: "<<balance<<"\n";*/
+
 	
 	return 0;
 }

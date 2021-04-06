@@ -21,7 +21,6 @@ void ATM::display_balance()const
 void ATM::scan_card()
 {
     customer_index = rand() % accounts.size() - 1 + 1;
-    std::cout<<"index: "<<customer_index<<"\n";
 }
 
 int ATM::get_balance_from_DB()
