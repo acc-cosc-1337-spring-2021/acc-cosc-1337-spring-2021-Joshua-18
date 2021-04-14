@@ -36,8 +36,9 @@ public://access specifier USERS OF OUR CLASS(OTHER OBJECTS) CAN SEE WHAT'S IN PU
     void deposit(int amount);
     void withdraw(int amount);
     static int get_bank_balance(){return bank_balance;}
-private://access specifier-ONLY BANK ACCOUNT CLASS SEES DATA/FUNCTIONS IN PRIVATE
+protected:
     int balance{0};//1 customer's balance, protect data integry-Encapsulation
+private://access specifier-ONLY BANK ACCOUNT CLASS SEES DATA/FUNCTIONS IN PRIVATE
     static int bank_balance;//all the bank's customer balances
 };
 
