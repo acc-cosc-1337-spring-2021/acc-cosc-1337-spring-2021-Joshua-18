@@ -2,7 +2,34 @@
 #include "tic_tac_toe.h"
 #include <iostream>
 
-using std::cout;
+using std::cout; using std::cin;
+
+std::istream& operator>>(std::istream& in, tic_tac_toe& game)
+{
+int position;
+cout<<"\nIt's "<<game.get_player()<<"'s turn."<<" Please choose a free slot on the board using numbers from 1-9: ";
+cin>>position;
+	while (position < 1 || position > 9)
+	{
+		// infinite loop if user chooses a character.
+		cout<<"Invalid input, please choose position from 1 - 9: ";
+		cin>>position;
+		cout<<"\n";
+	}
+			
+	game.mark_board(position);
+}
+
+
+std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
+{
+    cout<<game.pegs[0]<<" | "<<game.pegs[1]<<" | "<<game.pegs[2]<<"\n";
+    cout<<"--+---+--"<<"\n";
+    cout<<game.pegs[3]<<" | "<<game.pegs[4]<<" | "<<game.pegs[5]<<"\n";
+    cout<<"--+---+--"<<"\n";
+    cout<<game.pegs[6]<<" | "<<game.pegs[7]<<" | "<<game.pegs[8]<<"\n";  
+}
+
 
 bool tic_tac_toe::game_over()
 {
@@ -49,14 +76,14 @@ string tic_tac_toe::get_player()const
     return player;
 }
 
-void tic_tac_toe::display_board()const
-{
-    cout<<pegs[0]<<" | "<<pegs[1]<<" | "<<pegs[2]<<"\n";
-    cout<<"--+---+--"<<"\n";
-    cout<<pegs[3]<<" | "<<pegs[4]<<" | "<<pegs[5]<<"\n";
-    cout<<"--+---+--"<<"\n";
-    cout<<pegs[6]<<" | "<<pegs[7]<<" | "<<pegs[8]<<"\n";  
-}
+// void tic_tac_toe::display_board()const
+// {
+//     cout<<pegs[0]<<" | "<<pegs[1]<<" | "<<pegs[2]<<"\n";
+//     cout<<"--+---+--"<<"\n";
+//     cout<<pegs[3]<<" | "<<pegs[4]<<" | "<<pegs[5]<<"\n";
+//     cout<<"--+---+--"<<"\n";
+//     cout<<pegs[6]<<" | "<<pegs[7]<<" | "<<pegs[8]<<"\n";  
+// }
 
 string tic_tac_toe::get_winner()
 {
