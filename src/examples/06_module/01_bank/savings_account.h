@@ -6,9 +6,9 @@
 class SavingsAccount : public BankAccount
 {
 public:
-    SavingsAccount(){}
-    SavingsAccount(int b) : BankAccount(b) {}
-    int get_balance()const{return balance * .05 * time + balance;}
+    SavingsAccount(){/*empty function code block*/}
+    SavingsAccount(int b) : BankAccount(b) {/*empty function code block*/}
+    int get_balance()const override{return balance * interest_rate * time + balance;}
     double get_interest_earned()const{return balance * interest_rate * time;}
 private:
     const double interest_rate {.05};

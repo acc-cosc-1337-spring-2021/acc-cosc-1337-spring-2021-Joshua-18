@@ -10,6 +10,9 @@ using std::cout; using std::cin;
 #include<memory>
 using std::unique_ptr; using std::make_unique;
 
+#include<vector>
+using std::vector;
+
 int main()
 {
 	// string name;// creates a string var in memory
@@ -49,20 +52,47 @@ int main()
 	cout<<"Balance: "<<balance<<"\n";*/
 
 
-	unique_ptr<SavingsAccount> savings0 = make_unique<SavingsAccount>();
-	cout<<"Savings Balance: "<<savings0->get_balance()<<"\n";
+	// unique_ptr<SavingsAccount> savings0 = make_unique<SavingsAccount>();
+	// cout<<"Savings Balance: "<<savings0->get_balance()<<"\n";
 
-	unique_ptr<SavingsAccount> savings1 = make_unique<SavingsAccount>(1000);
-	cout<<"Savings Balance: "<<savings1->get_balance()<<"\n";
-	cout<<"Savings interest: "<<savings1->get_interest_earned()<<"\n\n";
+	// unique_ptr<SavingsAccount> savings1 = make_unique<SavingsAccount>(1000);
+	// cout<<"Savings Balance: "<<savings1->get_balance()<<"\n";
+	// cout<<"Savings interest: "<<savings1->get_interest_earned()<<"\n\n";
 
-	CheckingAccount checking(100);
-	cout<<"Checking Balance: "<<checking.get_balance()<<"\n\n";
+	// CheckingAccount checking(100);
+	// cout<<"Checking Balance: "<<checking.get_balance()<<"\n\n";
 
-	//pointers
-	BankAccount* a = new BankAccount(50);
-	SavingsAccount* b = new SavingsAccount(500);
+	// BankAccount a1;
+	// SavingsAccount s1;
+	// cout<<sizeof(a1)<<"\n";
+	// cout<<sizeof(s1)<<"\n";
+
+	// a1 = s1;
+
+	//unique pointers
+	//Derived Class pointer can be assigned to a Base class pointer
+	unique_ptr<BankAccount> s = make_unique<SavingsAccount>(1000);
+	cout<<"Balance: "<<s->get_balance()<<"\n";
+	cout<<"Interest Balance: "<<static_cast<SavingsAccount*>(s.get())->get_balance()<<"\n";
+	cout<<"Interest Balance: "<<static_cast<SavingsAccount*>(s.get())->get_balance_with_interest()<<"\n";
+
+	unique_ptr<BankAccount> checking = make_unique<CheckingAccount>();
+	cout<<"Balance: "<<checking->get_balance()<<"\n";
+
+	unique_ptr<BankAccount> checking1 = make_unique<CheckingAccount>(500);
+	cout<<"Balance: "<<checking1->get_balance()<<"\n\n\n";
+
+	vector<unique_ptr<BankAccount>> accounts;
+
+	accounts.push_back(std::move(s));
+	accounts.push_back(std::move(checking));
+	accounts.push_back(std::move(checking1));
+
+	cout<<"Loop vector: \n";	
+	for(auto& account: accounts)
+	{
+		cout<<account->get_balance()<<"\n";
+	}
 	
-
 	return 0;
 }

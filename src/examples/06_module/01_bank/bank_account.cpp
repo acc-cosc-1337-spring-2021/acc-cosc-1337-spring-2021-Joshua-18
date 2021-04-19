@@ -1,6 +1,11 @@
 //bank_account.cpp
 #include "bank_account.h"
 
+int BankAccount::get_balance()const
+{
+    return balance;
+} 
+
 void BankAccount::deposit(int amount)
 { 
     if(amount > 0)
@@ -44,11 +49,11 @@ std::istream& operator>>(std::istream& in, BankAccount& account)
     return in; 
 }
 
-BankAccount operator+(const BankAccount& a1, const BankAccount& a2)
-{
-    BankAccount account(a1.balance + a2.balance);
-    return account;
-}
+// BankAccount operator+(const BankAccount& a1, const BankAccount& a2)
+// {
+//     BankAccount account(a1.balance + a2.balance);
+//     return account;
+// }
 
 //FREE FUNCTIONS NOT PART OF THE BANK ACCOUNT CLASS!!!!!!
 void display_balance(const BankAccount& account)
@@ -56,12 +61,12 @@ void display_balance(const BankAccount& account)
     std::cout<<"Display balance: "<<account.get_balance()<<"\n";
 }
 
-BankAccount get_account(int balance)
-{
-    BankAccount account(balance);
+// BankAccount get_account(int balance)
+// {
+//     BankAccount account(balance);
 
-    return account;
-}
+//     return account;
+// }
 
 
 //======branch bank class
