@@ -6,28 +6,65 @@ using std::cout; using std::cin;
 
 std::istream& operator>>(std::istream& in, tic_tac_toe& game)
 {
-int position;
-cout<<"\nIt's "<<game.get_player()<<"'s turn."<<" Please choose a free slot on the board using numbers from 1-9: ";
-cin>>position;
-	while (position < 1 || position > 9)
-	{
-		// infinite loop if user chooses a character.
-		cout<<"Invalid input, please choose position from 1 - 9: ";
-		cin>>position;
-		cout<<"\n";
-	}
-			
-	game.mark_board(position);
+    int position;
+    if (game.pegs.size() == 9)
+    {
+    cout<<"\nIt's "<<game.get_player()<<"'s turn."<<" Please choose a free slot on the board using numbers from 1-9: ";
+    in>>position;
+        while (position < 1 || position > 9)
+        {
+            // infinite loop if user chooses a character.
+            cout<<"Invalid input, please choose position from 1 - 9: ";
+            cin>>position;
+            cout<<"\n";
+        }
+                
+        game.mark_board(position);
+        return in;
+    }
+    else if (game.pegs.size() == 16)
+    {
+        cout<<"\nIt's "<<game.get_player()<<"'s turn."<<" Please choose a free slot on the board using numbers from 1-16: ";
+        in>>position;
+        while (position < 1 || position > 16)
+        {
+            // infinite loop if user chooses a character.
+            cout<<"Invalid input, please choose position from 1 - 16: ";
+            cin>>position;
+            cout<<"\n";
+        }
+                
+        game.mark_board(position);
+        return in;
+    }
+    
+
 }
 
 
 std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
 {
-    cout<<game.pegs[0]<<" | "<<game.pegs[1]<<" | "<<game.pegs[2]<<"\n";
-    cout<<"--+---+--"<<"\n";
-    cout<<game.pegs[3]<<" | "<<game.pegs[4]<<" | "<<game.pegs[5]<<"\n";
-    cout<<"--+---+--"<<"\n";
-    cout<<game.pegs[6]<<" | "<<game.pegs[7]<<" | "<<game.pegs[8]<<"\n";  
+    if (game.pegs.size() == 9)
+    {
+    out<<game.pegs[0]<<" | "<<game.pegs[1]<<" | "<<game.pegs[2]<<"\n";
+    out<<"--+---+--"<<"\n";
+    out<<game.pegs[3]<<" | "<<game.pegs[4]<<" | "<<game.pegs[5]<<"\n";
+    out<<"--+---+--"<<"\n";
+    out<<game.pegs[6]<<" | "<<game.pegs[7]<<" | "<<game.pegs[8]<<"\n";  
+    return out;
+    }
+    else if (game.pegs.size() == 16)
+    {
+    out<<game.pegs[0]<<" | "<<game.pegs[1]<<" | "<<game.pegs[2]<<" | "<<game.pegs[3]<<"\n";
+    out<<"--+---+--"<<"\n";
+    out<<game.pegs[4]<<" | "<<game.pegs[5]<<" | "<<game.pegs[6]<<" | "<<game.pegs[7]<<"\n";
+    out<<"--+---+--"<<"\n";
+    out<<game.pegs[8]<<" | "<<game.pegs[9]<<" | "<<game.pegs[10]<<" | "<<game.pegs[11]<<"\n";
+    out<<"--+---+--"<<"\n";
+    out<<game.pegs[12]<<" | "<<game.pegs[13]<<" | "<<game.pegs[14]<<" | "<<game.pegs[15]<<"\n";   
+    return out;
+    }
+    
 }
 
 
@@ -93,92 +130,18 @@ string tic_tac_toe::get_winner()
 bool tic_tac_toe::check_column_win()
 {
 
-// values 0 , 3 , 6
-    if (pegs[0] == "x" && pegs[3] == "x" && pegs[6] == "x")
-    {
-        return true;
-    }
-    if (pegs[0] == "o" && pegs[3] == "o" && pegs[6] == "o")
-    {
-        return true;
-    }
-// values 1 , 4, 7
-    if (pegs[1] == "x" && pegs[4] == "x" && pegs[7] == "x")
-    {
-        
-        return true;
-    }
-     if (pegs[1] == "o" && pegs[4] == "o" && pegs[7] == "o")
-    {
-        return true;
-    }
-// values 2, 5, 8
-     if (pegs[2] == "x" && pegs[5] == "x" && pegs[8] == "x")
-    {
-        return true;
-    }
-    if (pegs[2] == "o" && pegs[5] == "o" && pegs[8] == "o")
-    {
-        return true;
-    }
+
     return false;
 }
 
 bool tic_tac_toe::check_row_win()
 {
-//  values 0, 1, 2
-    if (pegs[0] == "x" && pegs[1] == "x" && pegs[2] == "x")
-    {
-        return true;
-    }
-    if (pegs[0] == "o" && pegs[1] == "o" && pegs[2] == "o")
-    {
-        return true;
-    }
 
-//  values 3, 4, 5
-    if (pegs[3] == "x" && pegs[4] == "x" && pegs[5] == "x")
-    {
-        return true;
-    }
-    if (pegs[3] == "o" && pegs[4] == "o" && pegs[5] == "o")
-    {
-        return true;
-    }
-
-//  values 6, 7, 8
-    if (pegs[6] == "x" && pegs[7] == "x" && pegs[8] == "x")
-    {
-        return true;
-    }
-    if (pegs[6] == "o" && pegs[7] == "o" && pegs[8] == "o")
-    {
-        return true;
-    }
     return false;
 }
 
 bool tic_tac_toe::check_diagonal_win()
 {
-//  values 0, 4, 8 
-    if (pegs[0] == "x" && pegs[4] == "x" && pegs[8] == "x")
-    {
-        return true;
-    }
-    if (pegs[0] == "o" && pegs[4] == "o" && pegs[8] == "o")
-    {
-        return true;
-    }
-
-//  values 2, 4, 6
-    if (pegs[2] == "x" && pegs[4] == "x" && pegs[6] == "x")
-    {
-        return true;
-    }
-    if (pegs[2] == "o" && pegs[4] == "o" && pegs[6] == "o")
-    {
-        return true;
-    }
 
     return false;
 }

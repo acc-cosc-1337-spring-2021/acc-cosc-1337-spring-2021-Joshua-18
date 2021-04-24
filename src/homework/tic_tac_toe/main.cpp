@@ -1,6 +1,7 @@
 #include"tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
 #include<iostream>
+#include<memory>
 
 using std::cin, std::cout,  std::string;
 
