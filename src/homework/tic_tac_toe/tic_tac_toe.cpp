@@ -56,11 +56,11 @@ std::ostream& operator<<(std::ostream& out, const tic_tac_toe& game)
     else if (game.pegs.size() == 16)
     {
     out<<game.pegs[0]<<" | "<<game.pegs[1]<<" | "<<game.pegs[2]<<" | "<<game.pegs[3]<<"\n";
-    out<<"--+---+--"<<"\n";
+    out<<"--+---+---+--"<<"\n";
     out<<game.pegs[4]<<" | "<<game.pegs[5]<<" | "<<game.pegs[6]<<" | "<<game.pegs[7]<<"\n";
-    out<<"--+---+--"<<"\n";
+    out<<"--+---+---+--"<<"\n";
     out<<game.pegs[8]<<" | "<<game.pegs[9]<<" | "<<game.pegs[10]<<" | "<<game.pegs[11]<<"\n";
-    out<<"--+---+--"<<"\n";
+    out<<"--+---+---+--"<<"\n";
     out<<game.pegs[12]<<" | "<<game.pegs[13]<<" | "<<game.pegs[14]<<" | "<<game.pegs[15]<<"\n";   
     return out;
     }
@@ -112,15 +112,6 @@ string tic_tac_toe::get_player()const
 {
     return player;
 }
-
-// void tic_tac_toe::display_board()const
-// {
-//     cout<<pegs[0]<<" | "<<pegs[1]<<" | "<<pegs[2]<<"\n";
-//     cout<<"--+---+--"<<"\n";
-//     cout<<pegs[3]<<" | "<<pegs[4]<<" | "<<pegs[5]<<"\n";
-//     cout<<"--+---+--"<<"\n";
-//     cout<<pegs[6]<<" | "<<pegs[7]<<" | "<<pegs[8]<<"\n";  
-// }
 
 string tic_tac_toe::get_winner()
 {
