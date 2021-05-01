@@ -8,9 +8,10 @@ class tic_tac_toe_3 : public tic_tac_toe
 {
 public:
     tic_tac_toe_3() : tic_tac_toe(3){}
+    tic_tac_toe_3(std::vector<string> p, std::string winner): tic_tac_toe(p, winner){}
 private:
-    bool check_column_win();
-    bool check_row_win();
-    bool check_diagonal_win();
+    bool check_column_win() override;
+    bool check_row_win() override;
+    bool check_diagonal_win() override;
 };
 #endif

@@ -12,7 +12,8 @@ int main()
 {
 	
 	string player;
-	TicTacToeManager manager;
+	TicTacToeData Data;
+	TicTacToeManager manager = TicTacToeManager(Data);
 	char choice;
 	int x = 0;
 	int o = 0;
@@ -76,15 +77,14 @@ int main()
             cout<<"Game its a TIE~!\n";
         }
 		
-		else
 		cout<<"\nOh no! Game over..."<<"\n\n";
-		//cout<<game.get_winner()<<" won this round!"<<"\n";
+		cout<<"\n"<<game->get_winner()<<" won this round!"<<"\n";
+		manager.save_game(game);
+		manager.get_winner_total(o, x, ties);
 		cout<<"\nO wins: "<<o<<"\n";
 		cout<<"X wins: "<<x<<"\n";
 		cout<<"Ties: "<<ties<<"\n";
-		manager.save_game(game);
 		cout<<"\n";
-		manager.get_winner_total(o, x, ties);
 		cout<<"Press Y to play again or any character to end the game: ";
 		cin>>choice;
 		cout<<"\n"<<manager;
